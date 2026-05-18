@@ -1,15 +1,3 @@
----
-tags:
-  - università/p2p-systems-blockchain
-  - bitcoin
-  - anonimato
-  - deanonimizzazione
-  - analisi-blockchain
-data: 2026-03-30
-lezione: "17 - (Lab) Bitcoin: Anonimato e Deanonimizzazione"
-professore: "Damiano Di Francesco Maesa"
----
-
 # (Lab) Bitcoin: Anonimato e Deanonimizzazione
 
 Questa quinta lezione di laboratorio affronta due temi correlati: il completamento della pipeline di parsing del `blk.dat` con la gestione degli UTXO, e l'analisi dell'anonimato in Bitcoin, che è una delle proprietà più fraintese della blockchain. Il filo conduttore è che la blockchain è pubblica e persistente: tutto ciò che avviene su di essa è osservabile, e l'unica protezione offerta nativamente è la **pseudonimia**, non l'anonimato vero.

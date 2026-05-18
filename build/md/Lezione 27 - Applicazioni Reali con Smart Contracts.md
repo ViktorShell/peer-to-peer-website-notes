@@ -1,15 +1,3 @@
----
-tags:
-  - università/p2p-systems-blockchain
-  - blockchain
-  - smart-contracts
-  - defi
-  - supply-chain
-  - nft
-data: 2026-05-12
-lezione: "Lezione 27"
-professore: "Laura Ricci"
----
 # Applicazioni Reali con Smart Contracts
 
 Le criptovalute come Bitcoin, Ethereum e Solana rappresentano le applicazioni più note della blockchain, ma si tratta soltanto del punto di partenza. L'introduzione degli **smart contract** ha reso possibile il passaggio da semplici transazioni finanziarie a sistemi digitali completamente programmabili on-chain: supply chain, token fungibili e non fungibili, finanza decentralizzata (DeFi), organizzazioni governate da comunità (DAO) e identità digitale auto-sovrana (SSI). La chiave di questa espansione è la **composabilità**: diversi protocolli possono essere combinati tra loro come moduli software, creando ecosistemi di applicazioni interoperabili.

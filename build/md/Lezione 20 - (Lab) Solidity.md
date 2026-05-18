@@ -1,44 +1,6 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ethereum
-  - solidity
-  - smart-contracts
-  - laboratorio
-data: 2026-04-14
-lezione: "Lab 6 - Solidity"
-professore: "Damiano Di Francesco Maesa"
----
-## Ethereum: ripasso del modello degli account
-
-### Il modello account vs UTXO
-
-Ethereum adotta un **modello basato su account**, non su UTXO come Bitcoin. Questo lo rende concettualmente più simile a un conto bancario: ogni account ha un saldo che può essere incrementato o decrementato direttamente, il "cambio" è implicito, e la verifica della firma è fatta sull'account stesso (non su script).
-
-L'identificatore di un account è gli ultimi 160 bit dell'hash **Keccak-256** della chiave pubblica — non c'è un encoding human-friendly come in Bitcoin (no Base58Check).
-
-### EOA vs Contract account
-
-Esistono due tipi di account:
-
-- **EOA** (*Externally Owned Account*): account controllato da una chiave privata, l'unico che può *iniziare* transazioni autonomamente.
-- **Contract**: account senza chiave privata, il cui comportamento è determinato da bytecode EVM. Viene attivato solo quando riceve una transazione.
-
-![Tabella comparativa EOA vs Contract account in Ethereum](images/lezione-20-lab-solidity-img-01.jpg)
-*Fig. — Confronto tra EOA e Contract: solo l'EOA possiede una chiave privata e paga il gas. Il Contract riceve il proprio indirizzo come hash di sender+nonce alla creazione.*
-
-### Campi di ogni account
-
-Tutti gli account, sia EOA che Contract, condividono quattro campi:
-
-- **nonce** — numero di transazioni inviate dall'account (per EOA) o numero di contratti creati (per Contract, da 1). Previene la *malleability* e garantisce l'ordinamento: campo **dinamico**.
-- **balance** — quantità di wei posseduti, espressa come intero: **dinamico**.
-- **codeHash** — hash del bytecode EVM del contratto (per gli EOA è l'hash della stringa vuota). Il codice vero e proprio è conservato nel database di stato sotto il suo hash: **statico**.
-- **storageRoot** — hash della radice di un *Merkle Patricia Trie* che codifica lo storage dell'account (una mappa da interi a interi), vuoto per default: **dinamico**.
-
-> [!tip] Statico vs Dinamico
+> [!info] Prerequisiti
 >
-> `codeHash` è l'unico campo **statico**: il bytecode di un contratto non cambia dopo il deployment. Tutti gli altri campi variano ad ogni transazione che li coinvolge.
+> Questo lab presuppone il modello account-based di Ethereum (EOA vs Contract, i quattro campi `nonce`/`balance`/`codeHash`/`storageRoot`, l'indirizzo come ultimi 160 bit di Keccak-256 della chiave pubblica). Per il dettaglio vedi **Lezione 19 — Ethereum: Account, Transazioni e Gas**.
 
 ---
 

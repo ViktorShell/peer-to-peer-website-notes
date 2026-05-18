@@ -1,17 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - bitcoin
-  - bitcoinj
-  - java
-  - transactions
-  - script
-  - op-return
-  - laboratorio
-data: 2026-03-11
-lezione: "Lab 3 - Bitcoin Transactions e Scripts"
-professore: "Damiano Di Francesco Maesa"
----
 ## Cosa si è fatto in questa lezione
 
 Terzo laboratorio Bitcoin: dopo aver fatto conoscenza con `bitcoinj` nella lezione precedente (connessione alla rete, generazione di indirizzi, lettura del genesis block), qui si entra nel cuore della serializzazione del protocollo. Si scrive codice Java per **ispezionare una transazione campo per campo**, **decodificare gli script** di input e output mostrandoli come sequenze di opcode leggibili, e si affronta il caso speciale delle transazioni con `OP_RETURN` — l'opcode usato per inserire dati arbitrari nella blockchain.

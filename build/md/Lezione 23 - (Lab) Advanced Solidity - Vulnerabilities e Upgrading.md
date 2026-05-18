@@ -1,17 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ethereum
-  - solidity
-  - smart-contracts
-  - security
-  - reentrancy
-  - proxy-pattern
-  - laboratorio
-data: 2026-04-21
-lezione: "Lab 8 - Advanced Solidity (Vulnerabilities e Upgrading)"
-professore: "Damiano Di Francesco Maesa"
----
 # Lab 8 — Advanced Solidity: Vulnerabilities e Contract Upgrading
 
 Questa lezione chiude il ciclo su Solidity affrontando due temi che separano il codice didattico dal codice production-ready: le **vulnerabilità tipiche** degli smart contract e le **strategie di aggiornamento** per contratti che, per natura, nascono immutabili. I due temi sono strettamente collegati: l'impossibilità di correggere un contratto dopo il deploy rende le vulnerabilità particolarmente dannose, e i pattern di upgrading sono nati proprio per mitigare questa rigidità — al prezzo, però, di introdurre nuove forme di centralizzazione e nuovi vettori di attacco.

@@ -1,14 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ethereum
-  - proof-of-stake
-  - consensus
-  - blockchain
-data: 2026-04-28
-lezione: "Lezione 17 — Ethereum Consensus: Proof of Stake"
-professore: "Laura Ricci"
----
 # Ethereum Consensus: Proof of Stake
 
 ## Il Problema del Consenso Distribuito

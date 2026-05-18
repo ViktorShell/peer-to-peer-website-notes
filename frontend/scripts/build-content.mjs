@@ -138,22 +138,6 @@ function handleMermaid(md) {
   })
 }
 
-// Strip the administrative top of Lezione 1: everything between the first
-// header and the section that introduces the P2P paradigm.
-function stripAdminLesson1(md) {
-  const marker = md.search(/^##\s+(Il paradigma P2P|Paradigma P2P|P2P paradigm)/im)
-  if (marker === -1) return md
-  const titleMatch = md.match(/^#\s+.+$/m)
-  const title = titleMatch ? titleMatch[0] : '# Introduzione al corso'
-  return [
-    title,
-    '',
-    '> Nota: la sezione introduttiva amministrativa (CFU, docenti, calendario) è stata omessa da questo sito di studio. Le informazioni didattiche restano.',
-    '',
-    md.slice(marker),
-  ].join('\n')
-}
-
 function extractTitle(md, fallback) {
   const m = md.match(/^#\s+(.+?)\s*$/m)
   return m ? m[1].trim() : fallback
@@ -209,7 +193,6 @@ async function main() {
       continue
     }
     let md = await fs.readFile(path.join(SRC_MD, file), 'utf8')
-    if (parsed.num === 1) md = stripAdminLesson1(md)
     md = handleMermaid(md)
     md = convertCallouts(md)
     const title = extractTitle(md, parsed.titleFromFile)

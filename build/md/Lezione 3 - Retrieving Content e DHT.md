@@ -1,15 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - DHT
-  - consistent-hashing
-  - chord
-  - content-addressing
-data: 2026-02-19
-lezione: "Lezione 3"
-professore: "Laura Ricci"
----
-
 # Introduzione alle DHT: Consistent Hashing e Routing
 
 ## Il Problema del Recupero Distribuito

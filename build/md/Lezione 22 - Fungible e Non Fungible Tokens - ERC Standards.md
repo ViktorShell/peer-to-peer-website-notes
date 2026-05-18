@@ -1,15 +1,3 @@
----
-tags:
-  - università/p2p-systems-and-blockchain
-  - tokenization
-  - ERC-20
-  - ERC-721
-  - NFT
-  - smart-contracts
-data: 2026-04-20
-lezione: "Fungible and Non Fungible Tokens: ERC Standards"
-professore: "Laura Ricci, Damiano Di Francesco Maesa"
----
 # Fungible e Non Fungible Tokens: Standard ERC
 
 La tokenizzazione rappresenta una delle applicazioni più trasformative della blockchain. Insieme a criptovalute, DeFi (*Decentralized Finance*), supply chain e identità digitale, i token costituiscono le cosiddette **killer application** delle blockchain. Questa lezione analizza la distinzione fondamentale tra token fungibili e non fungibili, i meccanismi contrattuali che li implementano su Ethereum, e gli standard ERC che ne garantiscono l'interoperabilità.

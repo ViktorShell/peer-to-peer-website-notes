@@ -1,14 +1,4 @@
-# Introduzione al Corso — P2P Systems and Blockchain
-
-## Struttura del Corso
-
-Il corso (9 CFU) è tenuto da Laura Ricci e Damiano Di Francesco Maesa. Si divide in lezioni teoriche (~6 CFU) e laboratorio (~3 CFU), dove si sviluppano smart contract con **Solidity** e **Hardhat**.
-
-L'esame consiste in un progetto su blockchain seguito da un orale che discute il progetto e gli argomenti teorici non coperti da esso. Esempi di progetti passati: MasterMind o BattleShip sulla blockchain, aste smart, lotterie smart, commercio di contenuti con ricompensa, Splitwise sulla blockchain.
-
-Il programma copre: sistemi P2P (overlay non strutturati, DHT), Bitcoin ed Ethereum, smart contract, soluzioni di scalabilità Layer-2, e applicazioni avanzate come DeFi, Supply Chain e Self Sovereign Identity (SSI). Gli strumenti fondamentali utilizzati durante il corso sono: algoritmi distribuiti, metodi crittografici e strutture dati probabilistiche.
-
----
+# Introduzione: P2P e Blockchain
 
 ## Il Paradigma Peer-to-Peer
 

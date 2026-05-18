@@ -1,15 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - bitcoin
-  - bitcoinj
-  - java
-  - testnet
-  - laboratorio
-data: 2026-03-10
-lezione: "Lab 2 - Bitcoin con bitcoinj"
-professore: "Damiano Di Francesco Maesa"
----
 ## Cosa si è fatto in questa lezione
 
 Secondo laboratorio del corso, interamente dedicato a Bitcoin visto "dall'interno" tramite la libreria **bitcoinj**. Dopo aver discusso nella lezione precedente il layer P2P in astratto, qui si scrive vero codice Java che apre connessioni verso la rete Bitcoin, stampa informazioni sui peer, scarica un blocco di esempio dalla **testnet**, genera indirizzi di tutti i tipi previsti dal protocollo (legacy, SegWit, Taproot) e infine ispeziona il famoso **genesis block** estraendone il messaggio di Satoshi.

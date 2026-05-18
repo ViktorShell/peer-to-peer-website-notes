@@ -1,16 +1,3 @@
----
-tags:
-  - università/peer-to-peer-blockchain
-  - progetto
-  - ethereum
-  - solidity
-  - bitcoin
-  - oracle
-  - smart-contracts
-data: 2026-05-05
-lezione: "Progetto Finale A.A. 2025/26"
-professore: "Ricci"
----
 # Progetto — Decentralised Lending Service
 
 ## Panoramica ad Alto Livello

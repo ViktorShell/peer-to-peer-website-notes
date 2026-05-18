@@ -1,13 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ethereum
-  - smart-contracts
-  - blockchain
-data: 2026-04-09
-lezione: "Lezione 19 — Ethereum: Accounts, Transactions, Gas"
-professore: "Laura Ricci"
----
 # Ethereum: Account, Transazioni e Gas
 
 ## Smart Contracts: l'idea originale

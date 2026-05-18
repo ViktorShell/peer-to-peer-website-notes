@@ -1,17 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - bitcoin
-  - bitcoinj
-  - java
-  - script
-  - blk-dat
-  - blockchain-analysis
-  - laboratorio
-data: 2026-03-17
-lezione: "Lab 4 - Script Classification e blk.dat"
-professore: "Damiano Di Francesco Maesa"
----
 ## Cosa si è fatto in questa lezione
 
 Quarto laboratorio Bitcoin. Si riprende da dove si era chiuso il lab precedente — la decodifica di una transazione raw — e si fa un salto di livello: invece di guardare transazioni **una alla volta**, si scrive un **parser dell'intera blockchain** che legge i file `blk*.dat` in cui Bitcoin Core salva i blocchi sul disco e produce statistiche aggregate (numero di transazioni, coinbase, witness, distribuzione dei tipi di script, indirizzi non decodificabili).

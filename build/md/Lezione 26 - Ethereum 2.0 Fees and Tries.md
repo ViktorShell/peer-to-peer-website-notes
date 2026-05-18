@@ -1,15 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ethereum
-  - gas-fees
-  - eip-1559
-  - merkle-patricia-trie
-  - transaction-receipt
-data: 2026-05-04
-lezione: "Lezione 26 — Ethereum 2.0: Fees and Tries"
-professore: "Laura Ricci, Damiano Di Francesco Maesa"
----
 # Ethereum 2.0: Fees and Tries
 
 Questa lezione affronta due macro-argomenti strettamente collegati: il **meccanismo di fee** di Ethereum — com'era prima del Merge e come è stato riformato dall'EIP-1559 — e le **strutture dati del Data Layer**, ossia i trie Merkle Patricia che Ethereum usa per rappresentare stato, transazioni, ricevute e storage dei contratti. Comprendere le fee significa capire l'economia di Ethereum; comprendere i trie significa capire come i dati vengono salvati, verificati e interrogati in modo efficiente.

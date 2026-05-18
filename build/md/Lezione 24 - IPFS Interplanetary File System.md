@@ -1,16 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ipfs
-  - content-addressing
-  - merkle-dag
-  - libp2p
-  - bitswap
-  - filecoin
-data: 2026-04-23
-lezione: "24 - IPFS: A Distributed Content Based Storage"
-professore: "Laura Ricci"
----
 # IPFS: Interplanetary File System
 
 ## Il Web centralizzato e il problema della localizzazione

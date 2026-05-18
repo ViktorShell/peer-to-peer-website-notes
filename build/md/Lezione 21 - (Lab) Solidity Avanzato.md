@@ -1,15 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - ethereum
-  - solidity
-  - smart-contracts
-  - laboratorio
-data: 2026-04-14
-lezione: "Lab 7 - Solidity (avanzato)"
-professore: "Damiano Di Francesco Maesa"
----
-
 # Lab 7 — Solidity (avanzato)
 
 Questa lezione prosegue l'introduzione a Solidity approfondendo il sistema dei tipi, le funzioni, la gestione degli errori, i modifier e gli eventi. Si tratta del cuore del linguaggio: capire come Solidity gestisce i tipi, la mutabilità dello stato e il controllo degli accessi è fondamentale per scrivere contratti corretti e sicuri.

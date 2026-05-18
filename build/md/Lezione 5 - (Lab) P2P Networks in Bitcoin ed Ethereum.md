@@ -1,16 +1,3 @@
----
-tags:
-  - università/peer-to-peer-systems-and-blockchain
-  - p2p
-  - bitcoin
-  - ethereum
-  - kademlia
-  - networking
-  - laboratorio
-data: 2026-02-24
-lezione: "Lab 1 - P2P Networks in Bitcoin ed Ethereum"
-professore: "Damiano Di Francesco Maesa"
----
 ## Inquadramento della lezione
 
 Questo primo laboratorio del corso apre la sezione applicativa della parte P2P: anziché discutere in astratto le proprietà delle reti overlay, si guarda come due blockchain reali — Bitcoin ed Ethereum — abbiano implementato, ciascuna a modo suo, il livello di comunicazione peer-to-peer su cui tutto il resto (consenso, propagazione delle transazioni, sincronizzazione degli stati) si appoggia.
