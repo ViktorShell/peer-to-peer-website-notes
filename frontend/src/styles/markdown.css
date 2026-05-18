@@ -1,0 +1,300 @@
+.markdown {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.markdown h1 {
+  font-size: 30px;
+  margin: 0 0 24px;
+  letter-spacing: -0.4px;
+}
+.markdown h2 {
+  font-size: 22px;
+  margin: 40px 0 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.markdown h3 {
+  font-size: 18px;
+  margin: 28px 0 10px;
+}
+.markdown h4 {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-soft);
+  margin: 22px 0 8px;
+}
+
+.markdown p {
+  margin: 0 0 16px;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.markdown li {
+  margin-bottom: 6px;
+}
+
+.markdown strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.markdown a {
+  color: var(--link);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.markdown a:hover {
+  border-bottom-color: var(--link);
+  text-decoration: none;
+}
+
+.markdown code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--code-text);
+}
+
+.markdown pre {
+  background: var(--code-bg);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 0 0 18px;
+  border: 1px solid var(--border);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.markdown pre code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  color: var(--code-text);
+}
+
+.markdown blockquote {
+  margin: 0 0 16px;
+  padding: 8px 18px;
+  border-left: 3px solid var(--border-strong);
+  color: var(--text-soft);
+  background: var(--bg-muted);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 22px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.markdown th,
+.markdown td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.markdown th {
+  background: var(--bg-muted);
+  font-weight: 600;
+}
+.markdown tr:last-child td {
+  border-bottom: 0;
+}
+
+.markdown img {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin: 8px auto 22px;
+  display: block;
+  max-width: 100%;
+}
+
+.markdown hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+.markdown .math-display {
+  overflow-x: auto;
+  padding: 4px 0;
+}
+.markdown .math-inline {
+  font-size: 0.95em;
+}
+
+/* ---------- Callouts ---------- */
+.callout {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--text-soft);
+  background: var(--bg-muted);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin: 0 0 20px;
+}
+.callout .callout-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+.callout-definition {
+  border-left-color: #4a6cf7;
+  background: rgba(74, 108, 247, 0.08);
+}
+.callout-definition .callout-title::before {
+  content: '📘 ';
+}
+.callout-tip,
+.callout-hint {
+  border-left-color: #22a06b;
+  background: rgba(34, 160, 107, 0.08);
+}
+.callout-tip .callout-title::before,
+.callout-hint .callout-title::before {
+  content: '💡 ';
+}
+.callout-warning {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+.callout-warning .callout-title::before {
+  content: '⚠️ ';
+}
+.callout-example {
+  border-left-color: #7b3ff2;
+  background: rgba(123, 63, 242, 0.08);
+}
+.callout-example .callout-title::before {
+  content: '🧪 ';
+}
+.callout-note,
+.callout-info,
+.callout-quote,
+.callout-title {
+  border-left-color: var(--text-soft);
+  background: var(--bg-muted);
+}
+.callout-note .callout-title::before,
+.callout-info .callout-title::before {
+  content: '📝 ';
+}
+.callout-abstract,
+.callout-summary {
+  border-left-color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.08);
+}
+.callout-abstract .callout-title::before,
+.callout-summary .callout-title::before {
+  content: '📋 ';
+}
+.callout-theorem {
+  border-left-color: #4a6cf7;
+  background: rgba(74, 108, 247, 0.08);
+}
+.callout-theorem .callout-title::before {
+  content: '🔷 ';
+}
+.callout-question {
+  border-left-color: #ec4899;
+  background: rgba(236, 72, 153, 0.08);
+}
+.callout-question .callout-title::before {
+  content: '❓ ';
+}
+
+/* ---------- Lab link banner inserted in lessons ---------- */
+.lab-banner {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  margin: 24px 0;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    rgba(74, 108, 247, 0.12),
+    rgba(123, 63, 242, 0.12)
+  );
+  border: 1px solid var(--accent-soft);
+}
+.lab-banner__icon {
+  font-size: 24px;
+}
+.lab-banner__title {
+  font-weight: 700;
+  margin: 0;
+  font-size: 15px;
+}
+.lab-banner__desc {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+.lab-banner__cta {
+  margin-left: auto;
+}
+
+/* ---------- Lesson layout ---------- */
+.lesson-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin: 32px auto 0;
+  max-width: var(--content-max-width);
+}
+
+.lesson-nav {
+  display: flex;
+  gap: 12px;
+  margin: 40px auto 0;
+  max-width: var(--content-max-width);
+}
+.lesson-nav__btn {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.lesson-nav__btn:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-muted);
+  text-decoration: none;
+}
+.lesson-nav__btn--next {
+  text-align: right;
+}
+.lesson-nav__btn small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.lesson-nav__btn strong {
+  font-size: 14px;
+}

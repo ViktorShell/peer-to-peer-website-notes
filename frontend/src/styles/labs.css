@@ -1,0 +1,240 @@
+.lab {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.lab__intro {
+  margin-bottom: 24px;
+}
+
+.lab-shell {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.lab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.lab-control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+}
+.lab-control label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.lab-control input,
+.lab-control select {
+  font-family: var(--mono);
+  padding: 8px 12px;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 14px;
+}
+.lab-control input:focus,
+.lab-control select:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-soft);
+}
+
+.lab-vis {
+  background: var(--bg-muted);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  overflow: auto;
+}
+
+.lab-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.lab-stat {
+  background: var(--bg-muted);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.lab-stat__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.lab-stat__value {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  word-break: break-all;
+}
+
+/* XOR bits */
+.bit-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+.bit-row__label {
+  font-size: 11px;
+  font-family: var(--sans);
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.bit-row__bits {
+  display: flex;
+  gap: 6px;
+}
+.bit {
+  width: 32px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  font-weight: 700;
+}
+.bit--diff {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #b45309;
+}
+:root[data-theme='dark'] .bit--diff {
+  color: #fbbf24;
+}
+
+/* Kademlia tree */
+.tree {
+  display: grid;
+  gap: 4px;
+}
+.tree-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.tree-node:hover {
+  border-color: var(--accent);
+}
+.tree-node--target {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+.tree-node--visited {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+/* Ring (consistent hashing) */
+.ring-svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* PoW miner */
+.pow-output {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-family: var(--mono);
+  font-size: 13px;
+  overflow-x: auto;
+  word-break: break-all;
+}
+.pow-output__hash--match {
+  color: #22a06b;
+  font-weight: 700;
+}
+.pow-zeros {
+  color: #22a06b;
+  font-weight: 700;
+  background: rgba(34, 160, 107, 0.15);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Merkle */
+.merkle-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 0;
+}
+.merkle-level {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.merkle-leaf,
+.merkle-hash {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  word-break: break-all;
+  max-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.merkle-leaf:hover,
+.merkle-hash:hover {
+  border-color: var(--accent);
+}
+.merkle-leaf--selected,
+.merkle-hash--root {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+.merkle-hash--proof {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+}
+
+/* Lab link card */
+.lab-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
