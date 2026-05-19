@@ -1,4 +1,11 @@
-import { useCallback, useMemo } from 'react'
+import {
+  createContext,
+  createElement,
+  useCallback,
+  useContext,
+  useMemo,
+  type ReactNode,
+} from 'react'
 import { useLocalStorage } from './useLocalStorage'
 import {
   BADGES_BY_ID,
@@ -10,7 +17,24 @@ import {
 } from '@/utils/progress'
 import type { ModuleId } from '@/content/manifest'
 
-export function useProgress() {
+// React Context so every component shares ONE progress state and re-renders
+// when any action mutates it. Without this, each call to `useProgress()`
+// instantiates its own useLocalStorage hook → updates in one component never
+// reach the others until a full page reload.
+
+type ProgressApi = {
+  state: ProgressState
+  markLessonViewed: (slug: string, moduleId: ModuleId) => void
+  recordQuickCheck: (slug: string, correct: number, total: number) => void
+  recordQuizResult: (moduleId: ModuleId, score: number) => void
+  recordLabUse: (slug: string, badgeToUnlock?: string, minUses?: number) => void
+  unlockBadge: (badgeId: string) => void
+  resetAll: () => void
+}
+
+const ProgressContext = createContext<ProgressApi | null>(null)
+
+export function ProgressProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useLocalStorage<ProgressState>(
     STORAGE_KEY,
     INITIAL_PROGRESS,
@@ -25,7 +49,7 @@ export function useProgress() {
           lessonsViewed: {
             ...prev.lessonsViewed,
             [slug]: {
-              viewedAt: new Date().toISOString(),
+              viewedAt: already?.viewedAt ?? new Date().toISOString(),
               quickCheckScore: already?.quickCheckScore,
               quickCheckTotal: already?.quickCheckTotal,
             },
@@ -70,7 +94,7 @@ export function useProgress() {
       setState((prev) => {
         const existing = prev.moduleQuizzes[moduleId]
         const isBest = !existing || score > existing.score
-        const xpGain = isBest ? xpForQuiz(score) : 5  // small re-attempt bonus
+        const xpGain = isBest ? xpForQuiz(score) : 5
         const newBadges = new Set(prev.badges)
         if (score >= 0.8) newBadges.add(MODULE_BADGE[moduleId])
         const moduleQuizzes = {
@@ -81,9 +105,9 @@ export function useProgress() {
             bestAt: isBest ? new Date().toISOString() : existing!.bestAt,
           },
         }
-        const allPassed = (['p2p-dht', 'bitcoin', 'ethereum', 'apps'] as const).every(
-          (m) => (moduleQuizzes[m]?.score ?? 0) >= 0.8,
-        )
+        const allPassed = (
+          ['p2p-dht', 'bitcoin', 'ethereum', 'apps'] as const
+        ).every((m) => (moduleQuizzes[m]?.score ?? 0) >= 0.8)
         if (allPassed) newBadges.add('completionist')
         return {
           ...prev,
@@ -133,23 +157,34 @@ export function useProgress() {
     setState(INITIAL_PROGRESS)
   }, [setState])
 
-  const lessonsByModule = useMemo(() => {
-    const out: Record<string, number> = {}
-    for (const slug of Object.keys(state.lessonsViewed)) {
-      // we don't store moduleId per lesson — caller can compute from manifest
-      out[slug] = 1
-    }
-    return out
-  }, [state.lessonsViewed])
+  const api = useMemo<ProgressApi>(
+    () => ({
+      state,
+      markLessonViewed,
+      recordQuickCheck,
+      recordQuizResult,
+      recordLabUse,
+      unlockBadge,
+      resetAll,
+    }),
+    [
+      state,
+      markLessonViewed,
+      recordQuickCheck,
+      recordQuizResult,
+      recordLabUse,
+      unlockBadge,
+      resetAll,
+    ],
+  )
 
-  return {
-    state,
-    markLessonViewed,
-    recordQuickCheck,
-    recordQuizResult,
-    recordLabUse,
-    unlockBadge,
-    resetAll,
-    lessonsByModule,
+  return createElement(ProgressContext.Provider, { value: api }, children)
+}
+
+export function useProgress(): ProgressApi {
+  const ctx = useContext(ProgressContext)
+  if (!ctx) {
+    throw new Error('useProgress must be used inside <ProgressProvider>')
   }
+  return ctx
 }

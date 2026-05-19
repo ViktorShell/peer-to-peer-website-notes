@@ -78,7 +78,10 @@ export function LessonPage() {
 
       {quickItems && quickItems.length > 0 && (
         <div style={{ maxWidth: 'var(--content-max-width)', margin: '32px auto 0' }}>
-          <QuickCheck slug={lesson.slug} items={quickItems} />
+          {/* key={lesson.slug} forces a remount when navigating between
+              lessons; without it React reuses the same QuickCheck instance
+              and the previous lesson's submitted answers carry over. */}
+          <QuickCheck key={lesson.slug} slug={lesson.slug} items={quickItems} />
         </div>
       )}
 

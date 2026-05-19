@@ -14,9 +14,10 @@ export function Header({ onMenuToggle }: Props) {
   const location = useLocation()
   const crumbs = buildBreadcrumb(location.pathname)
 
+  const lastIdx = crumbs.length - 1
   return (
     <header className="app-header">
-      <div className="row">
+      <div className="app-header__left">
         <button
           type="button"
           className="icon-btn sidebar-menu-btn"
@@ -25,14 +26,32 @@ export function Header({ onMenuToggle }: Props) {
         >
           ≡
         </button>
-        <div className="app-header__breadcrumb">
-          {crumbs.map((c, i) => (
-            <span key={i}>
-              {i > 0 && <span style={{ margin: '0 4px' }}>/</span>}
-              {c.to ? <Link to={c.to}>{c.label}</Link> : <span>{c.label}</span>}
-            </span>
-          ))}
-        </div>
+        <nav className="app-header__breadcrumb" aria-label="Percorso">
+          {crumbs.map((c, i) => {
+            const isLast = i === lastIdx
+            const label = c.to ? (
+              <Link to={c.to}>{c.label}</Link>
+            ) : (
+              <span>{c.label}</span>
+            )
+            return (
+              <span
+                key={i}
+                className={
+                  isLast ? 'app-header__breadcrumb__current' : undefined
+                }
+                title={isLast ? c.label : undefined}
+              >
+                {i > 0 && (
+                  <span className="app-header__breadcrumb__sep" aria-hidden="true">
+                    {' / '}
+                  </span>
+                )}
+                {label}
+              </span>
+            )
+          })}
+        </nav>
       </div>
       <div className="app-header__right">
         <span className="app-header__xp" title="Punti esperienza">

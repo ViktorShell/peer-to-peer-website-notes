@@ -146,6 +146,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   padding: 0 28px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-elevated);
@@ -154,26 +155,58 @@ h4 {
   z-index: 10;
 }
 
+/* Left side wrapper inside the header. Must allow children to shrink so the
+ * breadcrumb can truncate instead of wrapping to a new line. */
+.app-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .app-header__breadcrumb {
   font-size: 14px;
   color: var(--text-soft);
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 4px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 0;
 }
 
-.app-header__breadcrumb a {
+.app-header__breadcrumb a,
+.app-header__breadcrumb > span {
   color: var(--text-soft);
+  white-space: nowrap;
 }
 .app-header__breadcrumb a:hover {
   color: var(--text);
 }
 
+/* The current page (last crumb) gets the ellipsis when the breadcrumb is
+ * narrower than its content. */
+.app-header__breadcrumb__current {
+  color: var(--text);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.app-header__breadcrumb__sep {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
 .app-header__right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .app-header__xp {
@@ -184,6 +217,8 @@ h4 {
   border-radius: var(--radius-sm);
   background: var(--accent-soft);
   color: var(--accent);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .icon-btn {
@@ -359,6 +394,16 @@ h4 {
   color: var(--mod-apps);
 }
 
+/* Burger menu button: visible only on mobile. Without this rule, the inherited
+ * .icon-btn display:inline-flex makes it always visible — and clicking it on
+ * desktop renders the backdrop as a third grid child, breaking the layout. */
+.icon-btn.sidebar-menu-btn {
+  display: none;
+}
+.sidebar-backdrop {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .sidebar {
     position: fixed;
@@ -373,12 +418,13 @@ h4 {
     transform: translateX(0);
   }
   .sidebar-backdrop {
+    display: block;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
     z-index: 15;
   }
-  .sidebar-menu-btn {
+  .icon-btn.sidebar-menu-btn {
     display: inline-flex;
   }
 }

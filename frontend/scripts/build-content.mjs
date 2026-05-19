@@ -22,6 +22,8 @@ const MANIFEST = path.join(ROOT, 'src', 'content', 'manifest.ts')
 
 // --- Module assignment ---------------------------------------------------
 // (lessonNumber|'P') -> moduleId
+// Note: 'P' (Progetto) intentionally not mapped — it's a capstone exercise,
+// out of scope for this study site.
 const MODULE_MAP = {
   1: 'p2p-dht', 2: 'p2p-dht', 3: 'p2p-dht', 4: 'p2p-dht',
   5: 'p2p-dht', 6: 'p2p-dht', 7: 'p2p-dht',
@@ -30,7 +32,7 @@ const MODULE_MAP = {
   16: 'bitcoin', 17: 'bitcoin', 18: 'bitcoin',
   19: 'ethereum', 20: 'ethereum', 21: 'ethereum', 22: 'ethereum',
   23: 'ethereum', 25: 'ethereum', 26: 'ethereum',
-  24: 'apps', 27: 'apps', P: 'apps',
+  24: 'apps', 27: 'apps',
 }
 
 // Lessons with linked interactive labs

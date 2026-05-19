@@ -13,7 +13,9 @@ export function ModulePage() {
   }
 
   const lessons = LESSONS.filter((l) => l.moduleId === moduleId)
-  const completed = lessons.filter((l) => state.lessonsViewed[l.slug]).length
+  const completed = lessons.filter(
+    (l) => state.lessonsViewed[l.slug]?.quickCheckScore !== undefined,
+  ).length
   const quizResult = state.moduleQuizzes[moduleId]
   const quizUnlocked = completed >= Math.max(1, Math.floor(lessons.length * 0.5))
 
@@ -63,7 +65,8 @@ export function ModulePage() {
       <h2 className="section-title">Lezioni</h2>
       <div className="stack">
         {lessons.map((lesson) => {
-          const isCompleted = !!state.lessonsViewed[lesson.slug]
+          const isCompleted =
+            state.lessonsViewed[lesson.slug]?.quickCheckScore !== undefined
           return (
             <Link
               key={lesson.slug}
@@ -104,7 +107,7 @@ export function ModulePage() {
                     fontSize: 13,
                   }}
                 >
-                  ✓ Letta
+                  ✓ Completata
                 </span>
               )}
             </Link>

@@ -9,7 +9,9 @@ export function ProgressPage() {
   const [confirming, setConfirming] = useState(false)
 
   const totalLessons = LESSONS.length
-  const viewedCount = Object.keys(state.lessonsViewed).length
+  const completedCount = Object.values(state.lessonsViewed).filter(
+    (v) => v?.quickCheckScore !== undefined,
+  ).length
   const earnedBadges = state.badges.map((id) => BADGES_BY_ID[id]).filter(Boolean)
 
   return (
@@ -34,9 +36,9 @@ export function ProgressPage() {
             <div style={{ fontSize: 36, fontWeight: 700 }}>⭐ {state.xp}</div>
           </div>
           <div>
-            <div className="text-soft" style={{ fontSize: 13 }}>Lezioni aperte</div>
+            <div className="text-soft" style={{ fontSize: 13 }}>Lezioni completate</div>
             <div style={{ fontSize: 36, fontWeight: 700 }}>
-              {viewedCount}
+              {completedCount}
               <span style={{ fontSize: 18, color: 'var(--text-muted)' }}>
                 {' '}/ {totalLessons}
               </span>
@@ -55,7 +57,9 @@ export function ProgressPage() {
       <div className="stack">
         {MODULES.map((mod) => {
           const lessons = LESSONS.filter((l) => l.moduleId === mod.id)
-          const opened = lessons.filter((l) => state.lessonsViewed[l.slug]).length
+          const opened = lessons.filter(
+            (l) => state.lessonsViewed[l.slug]?.quickCheckScore !== undefined,
+          ).length
           const quiz = state.moduleQuizzes[mod.id]
           return (
             <div key={mod.id} className="card">

@@ -40,10 +40,10 @@ export const MODULES: readonly ModuleMeta[] = [
   {
     id: 'apps',
     num: 4,
-    title: 'IPFS, Applicazioni & Progetto',
+    title: 'IPFS & Applicazioni',
     subtitle: 'Storage decentralizzato e casi d’uso',
     description:
-      'Content addressing con IPFS, applicazioni reali di smart contract e il progetto di sintesi: un servizio di lending decentralizzato.',
+      'Content addressing con IPFS e applicazioni reali di smart contract: DeFi, supply chain, identità decentralizzata.',
     color: '#22a06b',
   },
 ] as const

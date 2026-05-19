@@ -6,7 +6,9 @@ import { useProgress } from '@/hooks/useProgress'
 export function Home() {
   const { state } = useProgress()
   const totalLessons = LESSONS.length
-  const viewedCount = Object.keys(state.lessonsViewed).length
+  const completedCount = Object.values(state.lessonsViewed).filter(
+    (v) => v?.quickCheckScore !== undefined,
+  ).length
   const last = state.lastVisited
 
   return (
@@ -29,7 +31,7 @@ export function Home() {
           <div>
             <strong>Progresso complessivo</strong>
             <p className="muted" style={{ marginTop: 4 }}>
-              Hai aperto {viewedCount} / {totalLessons} lezioni · ⭐ {state.xp} XP ·
+              Completate {completedCount} / {totalLessons} lezioni · ⭐ {state.xp} XP ·
               🎖 {state.badges.length} badge
             </p>
           </div>
@@ -49,7 +51,7 @@ export function Home() {
         <div className="progress" style={{ marginTop: 16 }}>
           <div
             className="progress__fill"
-            style={{ width: `${Math.round((viewedCount / totalLessons) * 100)}%` }}
+            style={{ width: `${Math.round((completedCount / totalLessons) * 100)}%` }}
           />
         </div>
       </div>

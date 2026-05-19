@@ -72,8 +72,10 @@ export function Sidebar({ open, onClose }: Props) {
 
         {MODULES.map((mod) => {
           const lessons = LESSONS.filter((l) => l.moduleId === mod.id)
+          // "Completed" = quick check at the end of the lesson submitted.
+          // Scrolling alone is not enough; we want a positive action.
           const completedCount = lessons.filter(
-            (l) => state.lessonsViewed[l.slug],
+            (l) => state.lessonsViewed[l.slug]?.quickCheckScore !== undefined,
           ).length
           const isOpen = openModules.has(mod.id)
           return (
@@ -99,7 +101,9 @@ export function Sidebar({ open, onClose }: Props) {
               {isOpen && (
                 <div className="sidebar__lessons">
                   {lessons.map((lesson) => {
-                    const isCompleted = !!state.lessonsViewed[lesson.slug]
+                    const isCompleted =
+                      state.lessonsViewed[lesson.slug]?.quickCheckScore !==
+                      undefined
                     return (
                       <NavLink
                         key={lesson.slug}
