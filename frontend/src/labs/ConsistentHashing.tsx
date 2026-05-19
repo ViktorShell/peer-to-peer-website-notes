@@ -176,10 +176,11 @@ export function ConsistentHashing() {
       theory={<ConsistentHashingTheory />}
     >
       <div className="lab-shell">
+        {/* ─── Row 1: Nodo + Virtual nodes ─── */}
         <div className="lab-controls">
-          <div className="lab-control">
+          <div className="lab-control" style={{ flex: 1, minWidth: 180 }}>
             <label>Aggiungi nodo</label>
-            <div className="row" style={{ gap: 6 }}>
+            <div className="row" style={{ gap: 6, flexWrap: 'wrap' }}>
               <input
                 value={newNode}
                 onChange={(e) => setNewNode(e.target.value)}
@@ -188,6 +189,7 @@ export function ConsistentHashing() {
                 }}
                 placeholder="nome opzionale"
                 aria-label="Nome del nodo da aggiungere"
+                style={{ flex: '1 1 120px', minWidth: 0 }}
               />
               <button
                 type="button"
@@ -198,9 +200,29 @@ export function ConsistentHashing() {
               </button>
             </div>
           </div>
-          <div className="lab-control" style={{ flex: 1, minWidth: 220 }}>
+          <div className="lab-control" style={{ minWidth: 160 }}>
+            <label
+              title="Ogni nodo fisico viene replicato N volte sul ring per bilanciare meglio il carico"
+            >
+              Virtual nodes / nodo ⓘ
+            </label>
+            <select
+              value={virtualNodes}
+              onChange={(e) => setVirtualNodes(Number(e.target.value))}
+              aria-label="Numero di virtual nodes per nodo fisico"
+            >
+              <option value={1}>1 (nessun virtual)</option>
+              <option value={3}>3</option>
+              <option value={5}>5</option>
+            </select>
+          </div>
+        </div>
+
+        {/* ─── Row 2: Chiavi + Svuota ─── */}
+        <div className="lab-controls">
+          <div className="lab-control" style={{ flex: 1, minWidth: 200 }}>
             <label>Aggiungi chiave</label>
-            <div className="row" style={{ gap: 6 }}>
+            <div className="row" style={{ gap: 6, flexWrap: 'wrap' }}>
               <input
                 value={newItem}
                 onChange={(e) => setNewItem(e.target.value)}
@@ -210,6 +232,7 @@ export function ConsistentHashing() {
                 placeholder="es. user-123, foo.txt"
                 aria-label="Nome della chiave da aggiungere"
                 disabled={nodes.length === 0}
+                style={{ flex: '1 1 140px', minWidth: 0 }}
               />
               <button
                 type="button"
@@ -229,22 +252,6 @@ export function ConsistentHashing() {
                 + 5 random
               </button>
             </div>
-          </div>
-          <div className="lab-control">
-            <label
-              title="Ogni nodo fisico viene replicato N volte sul ring per bilanciare meglio il carico"
-            >
-              Virtual nodes / nodo ⓘ
-            </label>
-            <select
-              value={virtualNodes}
-              onChange={(e) => setVirtualNodes(Number(e.target.value))}
-              aria-label="Numero di virtual nodes per nodo fisico"
-            >
-              <option value={1}>1 (nessun virtual)</option>
-              <option value={3}>3</option>
-              <option value={5}>5</option>
-            </select>
           </div>
           <div className="lab-control" style={{ justifyContent: 'flex-end' }}>
             <label>&nbsp;</label>
