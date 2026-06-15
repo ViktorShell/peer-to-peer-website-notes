@@ -4,13 +4,13 @@ import { Sidebar } from './Sidebar'
 import { Header } from './Header'
 
 export function Layout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
 
   return (
-    <div className="app-shell">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <div className={`app-shell ${isToggled ? 'app-shell--toggled' : ''}`}>
+      <Sidebar open={isToggled} onClose={() => setIsToggled(false)} />
       <div className="app-shell__main">
-        <Header onMenuToggle={() => setSidebarOpen((v) => !v)} />
+        <Header onMenuToggle={() => setIsToggled((v) => !v)} />
         <main className="app-shell__content">
           <Outlet />
         </main>

@@ -116,6 +116,11 @@ h4 {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
   min-height: 100vh;
+  transition: grid-template-columns 0.2s ease-out;
+}
+
+.app-shell.app-shell--toggled {
+  grid-template-columns: 0 1fr;
 }
 
 .app-shell__main {
@@ -132,7 +137,7 @@ h4 {
 }
 
 @media (max-width: 900px) {
-  .app-shell {
+  .app-shell, .app-shell.app-shell--toggled {
     grid-template-columns: 1fr;
   }
   .app-shell__content {
@@ -238,11 +243,6 @@ h4 {
   color: var(--text);
 }
 
-/* Burger: hidden on desktop, shown only on mobile */
-.sidebar-menu-btn {
-  display: none;
-}
-
 /* ---------- Sidebar ---------- */
 .sidebar {
   width: var(--sidebar-width);
@@ -253,6 +253,13 @@ h4 {
   position: sticky;
   top: 0;
   height: 100vh;
+  transition: transform 0.2s ease-out, visibility 0s linear;
+}
+
+.app-shell.app-shell--toggled .sidebar {
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
 }
 
 .sidebar__brand {
@@ -394,11 +401,9 @@ h4 {
   color: var(--mod-apps);
 }
 
-/* Burger menu button: visible only on mobile. Without this rule, the inherited
- * .icon-btn display:inline-flex makes it always visible — and clicking it on
- * desktop renders the backdrop as a third grid child, breaking the layout. */
+/* Burger menu button: visible on both desktop and mobile */
 .icon-btn.sidebar-menu-btn {
-  display: none;
+  display: inline-flex;
 }
 .sidebar-backdrop {
   display: none;
@@ -410,12 +415,20 @@ h4 {
     top: 0;
     left: 0;
     transform: translateX(-100%);
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
     z-index: 20;
     box-shadow: var(--shadow-lg);
+    visibility: hidden;
   }
-  .sidebar.open {
+  .app-shell.app-shell--toggled .sidebar {
+    /* Override the desktop toggled state on mobile, as it uses open class instead */
+    transform: translateX(-100%);
+    visibility: hidden;
+  }
+  .sidebar.open, .app-shell.app-shell--toggled .sidebar.open {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.2s ease-out, visibility 0s linear;
   }
   .sidebar-backdrop {
     display: block;
